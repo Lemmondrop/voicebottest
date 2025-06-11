@@ -72,6 +72,10 @@ def main():
     
     if "check_reset" not in st.session_state:
         st.session_state["check_reset"] = False
+    
+    if not st.session_state.get("OPENAI_API"):
+        st.error("❗ OpenAI API 키를 입력해주세요.")
+        st.stop()
         
     st.header("voicebot program")
     
@@ -95,7 +99,7 @@ def main():
     with st.sidebar:
         
         st.session_state["OPENAI_API"] = st.text_input(label = "OPENAI API 키", placeholder="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",
-                                                       value = "", type = "password")
+                                                       value = "", type = "password", key="OPENAI_API")
         st.markdown('---')
 
         # GPT 모델 라디오 버튼 생성
