@@ -121,6 +121,11 @@ def main():
         st.subheader("질문하기")
         # 음성 녹음 아이콘 추가
         audio = audiorecorder("클릭하여 녹음하기", "녹음중...")
+        
+        if not st.session_state["OPENAI_API"]:
+            st.error("❗ OpenAI API 키가 비어 있습니다.")
+            st.stop()
+            
         if (audio.duration_seconds > 0) and (st.session_state["check_reset"]==False):
             # 음성 재생 
             st.audio(audio.export().read())
