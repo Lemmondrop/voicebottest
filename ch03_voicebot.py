@@ -92,21 +92,26 @@ def main():
     
         
     st.markdown('---')
-    
-    with st.sidebar:
         
-        st.session_state["OPENAI_API"] = st.text_input(label = "OPENAI API 키", placeholder="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",
-                                                       value = "", type = "password", key="OPENAI_API")
+    with st.sidebar:
+        st.text_input(
+            label="OPENAI API 키",
+            placeholder="sk-proj-...",
+            type="password",
+            key="OPENAI_API"  # ✅ 여기에만 값을 저장하면 됩니다.
+        )
         st.markdown('---')
 
         # GPT 모델 라디오 버튼 생성
-        model = st.radio(label = 'GPT 모델', options = ['gpt-4', 'gpt-3.5-turbo'])
-        
+        model = st.radio(label='GPT 모델', options=['gpt-4', 'gpt-3.5-turbo'])
+
         st.markdown('---')
-        
+
         if st.button(label='초기화'):
             st.session_state["chat"] = []
-            st.session_state["messages"] = [{"role": "system", "content" : "You are a thoughtful assistant. Respond to all input in 25 words and .answer in korea"}]
+            st.session_state["messages"] = [
+                {"role": "system", "content": "You are a thoughtful assistant. Respond to all input in 25 words and .answer in korea"}
+            ]
             st.session_state["check_reset"] = True
             
     # 기능 구현
