@@ -119,7 +119,7 @@ def main():
             # 음성 재생 
             st.audio(audio.export().read())
             # 음원 파일에서 텍스트 추출
-            question = STT(audio)
+            question = STT(audio, st.session_state["OPENAI_API"])
 
             # 채팅을 시각화하기 위해 질문 내용 저장
             now = datetime.now().strftime("%H:%M")
