@@ -72,10 +72,7 @@ def main():
     
     if "check_reset" not in st.session_state:
         st.session_state["check_reset"] = False
-    
-    if not st.session_state.get("OPENAI_API"):
-        st.error("❗ OpenAI API 키를 입력해주세요.")
-        st.stop()
+
         
     st.header("voicebot program")
     
