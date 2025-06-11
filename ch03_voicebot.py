@@ -143,7 +143,7 @@ def main():
         st.subheader("질문/답변")
         if  (audio.duration_seconds > 0)  and (st.session_state["check_reset"]==False):
             # ChatGPT에게 답변 얻기
-            response = ask_gpt(st.session_state["messages"], model)
+            response = ask_gpt(st.session_state["messages"], model, st.session_state["OPENAI_API"])
 
             # GPT 모델에 넣을 프롬프트를 위해 답변 내용 저장
             st.session_state["messages"] = st.session_state["messages"]+ [{"role": "system", "content": response}]
